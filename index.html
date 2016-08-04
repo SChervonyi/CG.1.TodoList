@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head> 
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
         <script type = "text/javascript" src = "main.js"></script>
         <link href = "common.css" rel = "stylesheet">
     </head>
@@ -9,13 +10,15 @@
         </h1>
     
     <body> 
+<div ng-app="myApp" ng-controller="myCtrl">
+
         <h2>
             Hello World <br>
         </h2>
-        <form>
-            <input type = "text" id = "add_field">
-            <button type = "button" onclick="ShowInput()">Add</button>
-        </form>
+<form>
+<input id="inputtext"  ng-model="hello">
+<button type="button" onclick="ShowInput()">Add</button>
+</form>
 
     </body>
 
