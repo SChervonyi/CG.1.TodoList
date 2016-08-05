@@ -1,8 +1,6 @@
 function ShowInput() {
     var x, text;
-
-     x = document.getElementById("InputText").value;
-
+    x = document.getElementById("add_field").value;
     if (isNaN(x)) {
         text = x;
     } else {
@@ -11,8 +9,7 @@ function ShowInput() {
     console.log(text);
 }
 
-
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope) {
-    $scope.hello = "Hello world";
-  });
+    $scope.todoInput = "";
+});
