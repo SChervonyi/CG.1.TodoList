@@ -1,7 +1,7 @@
 function ShowInput() {
     var x, text;
 
-     x = document.getElementById("inputtext").value;
+     x = document.getElementById("InputText").value;
 
     if (isNaN(x)) {
         text = x;
