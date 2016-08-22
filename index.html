@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html>
-    <head> 
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-        <script type = "text/javascript" src = "main.js"></script>
-        <link href = "common.css" rel = "stylesheet">
-    </head>
-        <h1>
-            This is my ToDoList <br>
-        </h1>
-    
-    <body> 
-<div ng-app="myApp" ng-controller="myCtrl">
-        <h2>
-            Hello World <br>
-        </h2>
-        <form>
-	    <input type = "text" id = "add_field" ng-model = "todoInput" >
-            <button type = "button" onclick="ShowInput()">Add</button>
-		<br>
-	You entered: {{todoInput}}
-        </form>
-
-    </body>
-
+ <head> 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script type = "text/javascript" src = "main.js"></script>
+  <link href = "common.css" rel = "stylesheet">
+ </head>
+ <body> 
+  <h1>
+   This is my ToDoList <br>
+  </h1>
+  <div ng-app="myToDoList" ng-controller="myCtrl">
+   <input ng-model="addRec">
+   <button ng-click="addRecord()">Add</button>
+   <p>{{errortext}}</p>
+   
+   <ul>
+    <li ng-repeat="x in products">{{x}} <img src="del.png" ng-click="removeRecord($index)"></li>
+   </ul>
+  </div>
+ </body>
 </html>
