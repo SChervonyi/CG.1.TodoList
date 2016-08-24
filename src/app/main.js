@@ -1,22 +1,45 @@
-var app = angular.module("myToDoList", []); 
+angular
+    .module("myToDoList", [])
+    .directive("todoInputView", todoInputView);
 
-app.controller("myCtrl", function($scope) {
-    $scope.products = ["Hello!"];
+/**
+ * Directive to represent input fields and list of added items
+ */
+function todoInputView(){
+    let directive = {
+        scope: {}, //isolate from global scope
+        templateUrl: 'app/todoInputView.html', //Bind directive with html view
+        restrict: 'EA',
+        controller: TodoInputViewController, //Bind directive with 'TodoInputViewController' controller
+        bindToController: true,
+        controllerAs: 'vm' // Abriviature from ViewModel
+    };
+    return directive;
 
-    $scope.addRecord = function () {
-        $scope.errortext = "";
+    function TodoInputViewController(){
+        let vm = this;
+        init(); //Initialize some preconditions
 
-        if (!$scope.addRec) return;
+        function init(){
+            vm.addRec = ""; //Declare 'addRec' variable. Actually it doesn't mandatory if you comment this line all will works fine.
+            vm.products = ["Hello!"];
+        }
 
-        if ($scope.products.indexOf($scope.addRec) == -1) {
-            $scope.products.push($scope.addRec);
-        } else {
-            $scope.errortext = "Attention. Record exists!";
+         vm.addRecord = function (){ //Add 'addRecord' function to controller scope
+            vm.errortext = "";
+
+            if (!vm.addRec) return;
+
+            if (vm.products.indexOf(vm.addRec) == -1) {
+                vm.products.push(vm.addRec);
+            } else {
+                vm.errortext = "Attention. Record exists!";
+            }
+         }
+
+        vm.removeRecord = function (x){ //Add 'removeRecord' function to controller scope
+            vm.errortext = "";
+            vm.products.splice(x, 1);
         }
     }
-
-    $scope.removeRecord = function (x) {
-        $scope.errortext = "";
-        $scope.products.splice(x, 1);
-    }
-});
+}
